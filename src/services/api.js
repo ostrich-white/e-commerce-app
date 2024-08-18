@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 const toastErrors = (error) => {
     if (error.request) {
-        toast.error('Network error. Please check your internet connection.');
+        toast.error(error.message)
     }
     else if (error.response) {
         const { status, data } = error.response;
@@ -36,7 +36,7 @@ const toastErrors = (error) => {
 }
 
 const api = axios.create({
-    baseURL: import.meta.env.API_BASE_URL || "http://localhost:3000",
+    baseURL: import.meta.env.API_BASE_URL || "http://localhost:3000/api/v1",
     timeout: 10000,
     headers: {
         "Content-Type": "application/json"
